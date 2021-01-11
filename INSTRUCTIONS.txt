@@ -1,0 +1,63 @@
+1. Go to this link:
+https://laravel.com/docs/6.x/installation
+
+2.Execute this command in the "cmd":
+composer create-project --prefer-dist laravel/laravel blog "6.*"
+
+3.Then go to:
+https://laravel.com/docs/6.x/frontend
+
+4.And select Frontend Scaffolding.
+
+5.Execute this command in the "cmd":
+composer require laravel/ui:^1.0 --dev
+
+6.As we will use React for this project we need to Execute the given Command:
+this will prepare the scaffold:
+php artisan ui react
+
+7.Then we have to run the command "npm install" to get all the needed npm component.
+
+--------------------------------
+
+8.After managing the react file structures at "resources" directory we must got to the "webpack.main.js" file
+	
+	there are some methods for webpack. As we have created the react file architecture manually we have to import 
+	those through webpack. for those we can add some command in the webpack file.
+	such ase:
+	
+	mix.copy(from,to); //for file
+	mix.copyDirectory(from,to); //for folder
+
+	After all these we have to run "npm run dev" in the "cmd" so that the webpack module bundle can start its work.
+
+9. After a successful build we have to go to the "resources/view" directory and create a "index.bloade.php" file.
+ 	in the "index.bloade.php" file we have to make a plain <html> file which will contain <head> & <body> section
+	for making connections with css/script files & other CDN services.
+
+10.Than we have to visit to the "routes/web.php" file and routhe that "index.blade.php" file.
+
+
+
+11. now install React Bootstrap, React Font Awesome ,
+	REACT ROUTER , REACT ROUTER DoM 
+ 	[AXIOS is installed as default during Scaffolding]
+
+12.********************************************************
+"npm run watch" is to see the frequent update of the development
+*************************************************************
+
+13.Laravel+React bundle can not support ARROW Functions and some other ES6 features.
+
+14. After Routing all the pages add this portion of code in the "routes/web.php" file:
+	Route::get('{AnyRoute}', function () {
+    	return view('index');
+	})->where('AnyRoute','.*');
+    So that it can find all the react pages through "index"
+
+15. Now we have to make Model & Controller.
+
+Controller Command: php artisan make:Controller NAME
+
+16. Page Rount can be maintained from "resources/route/AppRoute.js"
+	but for CRUD operation "web.php" route will be used for finding the controller.
