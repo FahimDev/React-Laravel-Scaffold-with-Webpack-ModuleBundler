@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/get-tnc','HallOfFame@trainCertList');
+
+Route::get('/get-anr','HallOfFame@awardList');
+
+Route::get('/get-member','HallOfFame@membershipList');
+
+
+Route::get('/research','ResearchControl@researchList');
+
+
 Route::get('/', function () {
     return view('index');
 });
@@ -18,3 +28,4 @@ Route::get('/', function () {
 Route::get('{AnyRoute}', function () {
     return view('index');
 })->where('AnyRoute','.*');
+

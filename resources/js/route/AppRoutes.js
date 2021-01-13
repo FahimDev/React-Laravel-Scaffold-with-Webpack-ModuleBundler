@@ -10,6 +10,8 @@ import devPortal from "../pages/DevPortal";
 import recovPass from "../pages/RecovPass";
 import social from "../pages/SocialSignup";
 import edu from "../pages/Educaion";
+import research from "../pages/ResearchList";
+import editFame from "../pages/EditFame";
 
 class AppRoutes extends Component {
     render() {
@@ -26,6 +28,8 @@ class AppRoutes extends Component {
                     <Route exact path="/satellite" component={serverSpace}/>
                     <Route exact path="/ground-station" component={clientSpace}/>
                     <Route exact path="/astronaut" component={auth}/>
+                    <Route exact path="/research-list" component={research}/>
+                    <Route exact path="/edit-hall-of-fame" component={editFame}/>
                 </Switch>
             </Fragment>
         );
