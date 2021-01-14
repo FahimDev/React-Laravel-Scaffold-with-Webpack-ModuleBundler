@@ -10,13 +10,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//--------------------HALL_OF_FAME------------------------------------------
 Route::get('/get-tnc','HallOfFame@trainCertList');
 
 Route::get('/get-anr','HallOfFame@awardList');
 
 Route::get('/get-member','HallOfFame@membershipList');
 
+Route::post('/add-fame','HallOfFame@trainCertCreate');
+//---------------------------------------------------------------------------
 
 Route::get('/research','ResearchControl@researchList');
 
