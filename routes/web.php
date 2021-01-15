@@ -11,22 +11,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //--------------------HALL_OF_FAME------------------------------------------
-Route::get('/get-tnc','HallOfFame@trainCertList');
+Route::get('/get-tnc','HallOfFame@trainCertList')->middleware('astronautCheck');//astronautCheck is created at Kernel
 
-Route::get('/get-anr','HallOfFame@awardList');
+Route::get('/get-anr','HallOfFame@awardList')->middleware('astronautCheck');
 
-Route::get('/get-member','HallOfFame@membershipList');
+Route::get('/get-member','HallOfFame@membershipList')->middleware('astronautCheck');
 
-Route::post('/add-fame','HallOfFame@trainCertCreate');
+Route::post('/add-fame','HallOfFame@trainCertCreate')->middleware('astronautCheck');
 //---------------------------------------------------------------------------
 
 //--------------------LOGIN/LOGOUT REQUEST-----------------------------------
 Route::post('/access-request','AstronautValidator@login');
+Route::get('/exit-request','AstronautValidator@onLogout');
 //---------------------------------------------------------------------------
 
-Route::get('/research','ResearchControl@researchList');
+Route::get('/research','ResearchControl@researchList')->middleware('astronautCheck');
 
-
+//---------------------------------------------------------------------------
 Route::get('/', function () {
     return view('index');
 });

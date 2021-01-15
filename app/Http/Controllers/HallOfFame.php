@@ -36,9 +36,6 @@ class HallOfFame extends Controller
 
         $type=$request->input('type');
 
-        $userLogin  = admin::where('user_name',$user)->first('password');
-        $hashedPassword = $userLogin->password ;
-        if (Hash::check($pass, $hashedPassword)) {
             if($type == "t&c"){
                 $title=$request->input('flexOne');
                 $institute=$request->input('flexTwo');
@@ -84,16 +81,13 @@ class HallOfFame extends Controller
                 $result=member_earn::insert(['userName'=> $user,'type'=> $type,'membership'=> $membership]);
 
                 if($result == true){
-                    return "200";
+                    return "200"; //Success
                 }else{
-                    return "304";
+                    return "304";//Not Modified
                 }
             }else{
                 return "400";//Bad Request
             }
-        }else{
-            return "401";
-        }
     }
 
     function authUser($user,$pass){

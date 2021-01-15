@@ -5,6 +5,7 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Axios from "axios";
+import {Link} from "react-router-dom";
 
 
 class LoginForm extends Component {
@@ -39,12 +40,17 @@ class LoginForm extends Component {
                 username,
                 password,
             }}).then(function (response) {
-            if(response.data == "8054"){
-                alert("SUCCESS!");
+            if(response.data == "200"){
+
+                window.location.href="/ground-station";
+
             }else if (response.data == "401"){
-                alert("NOT GOOD");
+                alert("Wrong password!Please, try again.");
+            }
+            else if (response.data == "404"){
+                alert("Unknown user!Please, provide a valid user name.");
             }else{
-                alert("Janina!");
+                alert("Error unknown!");
             }
 
         }).catch(function (error) {

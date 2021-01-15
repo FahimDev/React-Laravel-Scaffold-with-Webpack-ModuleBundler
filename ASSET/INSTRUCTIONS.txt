@@ -61,3 +61,7 @@ Controller Command: php artisan make:Controller NAME
 
 16. Page Rount can be maintained from "resources/route/AppRoute.js"
 	but for CRUD operation "web.php" route will be used for finding the controller.
+
+17.To keep the user loged in we are using sesson. so we need a middleware to verify user login status
+	during users every operation.The command is given below:
+	php artisan make:Middleware "name"

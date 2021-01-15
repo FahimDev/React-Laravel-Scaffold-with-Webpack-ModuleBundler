@@ -61,6 +61,7 @@ class Menu extends Component {
                     <NavLink> <Link className="NavItem" to="/astronaut"> <FontAwesomeIcon icon={faUserAstronaut} /> <span className={this.state.NavText}>User Portal (PWA)</span> </Link></NavLink>
                     <NavLink> <Link className="NavItem" to="/dev-portal"> <FontAwesomeIcon icon={faCode} /> <span className={this.state.NavText}>Portal for Developers</span> </Link> </NavLink>
                     <Nav.Link> <Link className="NavItem" to="/recover-auth"> <FontAwesomeIcon icon={faKey} /> <span className={this.state.NavText}>Recover Password</span> </Link> </Nav.Link>
+                    <a className=" ml-3 NavItem" href="/exit-request"> <FontAwesomeIcon icon={faPowerOff} /> <span className={this.state.NavText}>Sign Out</span></a>
                 </div>
                 <div onClick={this.showHideSideNav} className={this.state.mainDivOverlay}>
 
