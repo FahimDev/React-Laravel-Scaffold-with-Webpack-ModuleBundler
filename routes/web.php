@@ -20,6 +20,10 @@ Route::get('/get-member','HallOfFame@membershipList');
 Route::post('/add-fame','HallOfFame@trainCertCreate');
 //---------------------------------------------------------------------------
 
+//--------------------LOGIN/LOGOUT REQUEST-----------------------------------
+Route::post('/access-request','AstronautValidator@login');
+//---------------------------------------------------------------------------
+
 Route::get('/research','ResearchControl@researchList');
 
 

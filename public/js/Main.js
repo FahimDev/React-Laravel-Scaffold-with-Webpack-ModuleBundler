@@ -75292,6 +75292,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/FormControl */ "./node_modules/react-bootstrap/esm/FormControl.js");
 /* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
 /* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -75321,18 +75323,70 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var LoginForm = /*#__PURE__*/function (_Component) {
   _inherits(LoginForm, _Component);
 
   var _super = _createSuper(LoginForm);
 
   function LoginForm() {
+    var _this;
+
     _classCallCheck(this, LoginForm);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this);
+    _this.state = {
+      username: "",
+      password: ""
+    };
+    _this.onSubmitLog = _this.onSubmitLog.bind(_assertThisInitialized(_this));
+    _this.onChangeUser = _this.onChangeUser.bind(_assertThisInitialized(_this));
+    _this.onChangePass = _this.onChangePass.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(LoginForm, [{
+    key: "onChangeUser",
+    value: function onChangeUser(event) {
+      var user = event.target.value;
+      this.setState({
+        username: user
+      });
+    }
+  }, {
+    key: "onChangePass",
+    value: function onChangePass(event) {
+      var pass = event.target.value;
+      this.setState({
+        password: pass
+      });
+    }
+  }, {
+    key: "onSubmitLog",
+    value: function onSubmitLog(event) {
+      var username = this.state.username;
+      var password = this.state.password;
+      console.log(username + password);
+      var url = "/access-request";
+      axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(url, null, {
+        params: {
+          username: username,
+          password: password
+        }
+      }).then(function (response) {
+        if (response.data == "8054") {
+          alert("SUCCESS!");
+        } else if (response.data == "401") {
+          alert("NOT GOOD");
+        } else {
+          alert("Janina!");
+        }
+      })["catch"](function (error) {
+        alert(error);
+      });
+      event.preventDefault();
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -75353,11 +75407,13 @@ var LoginForm = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_5__["default"].Header, null, "Progressive Web Application"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_5__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_5__["default"].Title, null, "USER LOGIN"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_5__["default"].Text, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "formBasicEmail"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "User Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        onChange: this.onChangeUser,
         type: "text",
         placeholder: "Enter user name"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
         controlId: "formBasicPassword"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Password"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+        onChange: this.onChangePass,
         type: "password",
         placeholder: "Password"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Text, {
@@ -75368,6 +75424,7 @@ var LoginForm = /*#__PURE__*/function (_Component) {
         type: "checkbox",
         label: "Remember me"
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        onClick: this.onSubmitLog,
         variant: "primary",
         type: "submit"
       }, "Login"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
