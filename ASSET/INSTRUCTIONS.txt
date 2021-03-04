@@ -65,3 +65,7 @@ Controller Command: php artisan make:Controller NAME
 17.To keep the user loged in we are using sesson. so we need a middleware to verify user login status
 	during users every operation.The command is given below:
 	php artisan make:Middleware "name"
+
+
+----------> php artisan make:controller recoverPassControl NAME
+----------> php artisan make:mail CONTROLLER-NAME -m emails.VIEW-NAME

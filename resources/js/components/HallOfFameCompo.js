@@ -91,18 +91,18 @@ class HallOfFameCompo extends Component {
 
             const Certifications = TnC.map(TnC=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] </sub> <Button href='' variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] </sub> <Button href={`/del-fame/${TnC.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
                     </span>
             })
 
             const Awards = AnR.map(AnR=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} </sub> <Button href='' variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='{AnR.title}' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} </sub> <Button href={`/del-fame/${AnR.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='{AnR.title}' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
                     </span>
             })
             const Members = Member.map(Member=> {
                 return <span>
-                        <ListGroup.Item><FontAwesomeIcon icon={faArrowAltCircleRight} /> {Member.membership} <Button href='' variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> </ListGroup.Item>
+                        <ListGroup.Item><FontAwesomeIcon icon={faArrowAltCircleRight} /> {Member.membership} <Button href={`/del-fame/${Member.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href='' variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> </ListGroup.Item>
                     </span>
             })
             //------------------------------------------

@@ -24,10 +24,15 @@ class HallOfFame extends Controller
         return $result;
     }
 
-    function trainCertDelete(Request $request){
-        $id=$request->input('id');
+    function trainCertDelete( $id){
+        //$id=$request->input('id');
         $result=member_earn::where('id','=',$id)->delete();
-        return $result;
+
+        if($result == true){
+            return "200";
+        }else{
+            return "304"; //Not Modified
+        }
     }
 
     function trainCertCreate(Request $request){
