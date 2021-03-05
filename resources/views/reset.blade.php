@@ -16,7 +16,9 @@
         <div class="col-md-6 text-center mt-5">
             <div class="card">
                 <div class="card-body">
-                    <h3>Reset your password<button id="iconBox" class="btn btn-warning"><i id="statusIcon" class="fas fa-key"></i></button> </h3><hr>
+                    <h3>Reset your password<button id="iconBox" class="btn btn-warning"><i id="statusIcon" class="fas fa-key"></i></button> </h3>
+                    <p><sub>Minimum 6 & Maximum 10 Characters</sub></p>
+                    <hr>
                     <form method="POST">
                         @csrf
                         @error('newPassword') <div class="alert alert-danger">{{ $message }}</div> @enderror

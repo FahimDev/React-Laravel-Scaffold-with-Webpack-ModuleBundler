@@ -7,6 +7,8 @@ use App\Model\member_info;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class recoverPassControl extends Controller
 {
@@ -55,9 +57,34 @@ class recoverPassControl extends Controller
         $data = request()->validate([
             'newPassword' => 'required|max:10|min:6|confirmed',
         ]);
-//        $pass = $request->newPass;
-//        $conPass = $request->conPass;
-        //return $pass ;
+
+        $newPassword = $request -> newPassword;
+
+        $result  = admin::where('user_name',$user)->first('token_element');
+        if($result){
+            $prvKey = $result->token_element;
+            if($prvKey == $key){
+                $hashed = Hash::make($newPassword, [
+                    'memory' => 1024,
+                    'time' => 2,
+                    'threads' => 2,
+                ]);
+
+                $privateKey = Str::random(40);
+
+                $updateStatus = admin::where('user_name',$user)->update(['password' =>$hashed,'token_element' =>$privateKey]);
+                if($updateStatus){
+                    return redirect('/astronaut');
+                }else{
+                    return 'NOT MODIFIED!';
+                }
+
+            }else{
+                return 'Key Expired!';
+            }
+        }else{
+            return 'User Unknown!';
+        }
     }
 
 }

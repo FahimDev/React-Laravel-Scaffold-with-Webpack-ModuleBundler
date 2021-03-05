@@ -6,21 +6,26 @@ use App\Model\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; //The HASH Algo -> Argon2
 use phpDocumentor\Reflection\Types\String_;
+use Session;
+
 
 class HallOfFame extends Controller
 {
     function trainCertList(){
-        $result  = member_earn::where('userName','fahim0373')->where('type','t&c')->get();
+        $username = Session::get('userNameKey');
+        $result  = member_earn::where('userName',$username)->where('type','t&c')->get();
         return $result;
     }
 
     function awardList(){
-        $result  = member_earn::where('userName','fahim0373')->where('type','a&r')->get();
+        $username = Session::get('userNameKey');
+        $result  = member_earn::where('userName',$username)->where('type','a&r')->get();
         return $result;
     }
 
     function membershipList(){
-        $result  = member_earn::where('userName','fahim0373')->where('type','member')->get();
+        $username = Session::get('userNameKey');
+        $result  = member_earn::where('userName',$username)->where('type','member')->get();
         return $result;
     }
 
