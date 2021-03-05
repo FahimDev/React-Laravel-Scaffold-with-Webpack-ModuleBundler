@@ -12,13 +12,7 @@ use App\Mail\RecoverMail;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//------------------------------MAIL--------------------------------------
 
-Route::get('/recover-mail/{key}',function ($key){
-    
-});
-
-//----------------------------------------------------------------------------
 //--------------------HALL_OF_FAME------------------------------------------
 Route::get('/get-tnc','HallOfFame@trainCertList')->middleware('astronautCheck');//astronautCheck is created at Kernel
 
@@ -31,10 +25,13 @@ Route::post('/add-fame','HallOfFame@trainCertCreate')->middleware('astronautChec
 Route::get('/del-fame/{id}','HallOfFame@trainCertDelete')->middleware('astronautCheck');  //when we send parameters through the link we should use GET [unless we are updating]
 //---------------------------------------------------------------------------
 
+//------------------------------MAIL--------------------------------------
+Route::get('/recover-mail/{user}/{key}','recoverPassControl@resetPassWindow');
+Route::post('/recover-mail/{user}/{key}','recoverPassControl@resetPass');
+//----------------------------------------------------------------------------
 //*********TEMP LINK*********
-
 Route::post('/pass-recover','recoverPassControl@getPrKey');
-//Route::post('/pass-recover/{token}','HallOfFame@membershipList');
+//Route::post('/reset-this-pass','recoverPassControl@resetPass');
 //****************************
 
 

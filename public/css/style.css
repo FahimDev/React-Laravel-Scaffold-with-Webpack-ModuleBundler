@@ -25,9 +25,10 @@ a:hover{
     background-color: #000000 !important;
 }
 .normal-btn:hover{
-    background-color: #61DAFB !important;
+    color:  red!important;
+    background-color: #f7c600 !important;
 }
-
+/*#61DAFB*/
 .des-text{
     color: #636363!important;
     font-size:16px;
