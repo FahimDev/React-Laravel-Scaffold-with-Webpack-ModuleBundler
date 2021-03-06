@@ -23,9 +23,22 @@ class HallOfFame extends Controller
         return $result;
     }
 
+    function publication(){
+        $username = Session::get('userNameKey');
+        $result  = member_earn::where('userName',$username)->where('type','pub')->get();
+        return $result;
+    }
+
     function membershipList(){
         $username = Session::get('userNameKey');
         $result  = member_earn::where('userName',$username)->where('type','member')->get();
+        return $result;
+    }
+
+    function getByID($id){
+        $username = Session::get('userNameKey');
+        $result  = member_earn::where('id',$id)->get();
+        //where('userName',$username)->
         return $result;
     }
 
@@ -34,15 +47,15 @@ class HallOfFame extends Controller
         $result=member_earn::where('id','=',$id)->delete();
 
         if($result == true){
-            return "200";
+
+            return redirect('/hall-of-fame');
         }else{
             return "304"; //Not Modified
         }
     }
 
     function trainCertCreate(Request $request){
-        $user=$request->input('username');
-        $pass=$request->input('password');
+        $user = Session::get('userNameKey');
 
         $type=$request->input('type');
 

@@ -78,9 +78,7 @@ class EditFamePwa extends Component {
         let flexOne = this.state.flexOne;
         let flexTwo = this.state.flexTwo;
         let flexThree = this.state.flexThree;
-        //console.log(type+flexOne+flexTwo+flexThree);
-        let username = "fahim0373";
-        let password = "990331";
+
 
         let path = "/add-fame";
 
@@ -89,8 +87,6 @@ class EditFamePwa extends Component {
         }
 
         let formData = new FormData();
-        formData.append('username',username);
-        formData.append('password',password);
         formData.append('type',type);
         formData.append('flexOne',flexOne);
         formData.append('flexTwo',flexTwo);
@@ -99,6 +95,7 @@ class EditFamePwa extends Component {
         Axios.post(path,formData,config).then(function (response) {
             if(response.data == "200"){
                 alert("New "+printData+" information has been added.");
+                window.location.href="/hall-of-fame";
             }else if (response.data == "304"){
                 alert("New "+printData+" information is not added! Please, try again.");
             }

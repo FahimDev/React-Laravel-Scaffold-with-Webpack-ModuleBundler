@@ -11,8 +11,8 @@ import recovPass from "../pages/RecovPass";
 import social from "../pages/SocialSignup";
 import edu from "../pages/Educaion";
 import research from "../pages/ResearchList";
-import editFame from "../pages/EditFame";
-
+import addFame from "../pages/EditFame";
+import editFame from "../pages/UpdateFame";
 class AppRoutes extends Component {
     render() {
         return (
@@ -29,7 +29,8 @@ class AppRoutes extends Component {
                     <Route exact path="/ground-station" component={clientSpace}/>
                     <Route exact path="/astronaut" component={auth}/>
                     <Route exact path="/research-list" component={research}/>
-                    <Route exact path="/edit-hall-of-fame" component={editFame}/>
+                    <Route exact path="/add-hall-of-fame" component={addFame}/>
+                    <Route exact path="/edit-hall-of-fame/:editID" component={editFame}/>
                 </Switch>
             </Fragment>
         );

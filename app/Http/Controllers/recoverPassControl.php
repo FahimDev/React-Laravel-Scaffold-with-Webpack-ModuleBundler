@@ -24,7 +24,6 @@ class recoverPassControl extends Controller
                     $key = $key -> token_element;
                     $url = url("recover-mail/$user/$key") ;
                     Mail::to($eMail)->send(new RecoverMail($url));
-
                     return '200';
                 }else{
                     return '204';  //No content
@@ -78,7 +77,6 @@ class recoverPassControl extends Controller
                 }else{
                     return 'NOT MODIFIED!';
                 }
-
             }else{
                 return 'Key Expired!';
             }
