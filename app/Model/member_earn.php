@@ -10,6 +10,6 @@ class member_earn extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $keyType = 'int';
-    public $timestamps = true;
+    public $timestamps = false;
     protected $dateFormat = 'U';
 }

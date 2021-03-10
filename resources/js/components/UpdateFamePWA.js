@@ -35,6 +35,7 @@ class UpdateFamePwa extends Component {
             flexOne:"",
             flexTwo:"",
             flexThree:"",
+            flexFour:"",
             element:[],
             content:"",
             isLoading:true,
@@ -56,7 +57,24 @@ class UpdateFamePwa extends Component {
                 this.setState({element:response.data,isLoading:false,isError:false})
                 var obj = response.data;
                 var element = obj[0];
-                this.setState({type:element.type})
+                this.setState({type:element.type});
+                 if(this.state.type == "t&c"){
+                     this.setState({flexOne:element.title});
+                     this.setState({flexTwo:element.institution});
+                     this.setState({flexThree:element.instructor});
+                     this.setState({flexFour:element.year});
+                 }else if(this.state.type == "a&r"){
+                     this.setState({flexOne:element.title});
+                     this.setState({flexTwo:element.prizePosition});
+                     this.setState({flexThree:element.prizeCategory});
+                     this.setState({flexFour:element.year});
+                 }else if(this.state.type == "pub"){
+                     this.setState({flexOne:element.title});
+                     this.setState({flexTwo:element.institution});
+                     this.setState({flexThree:element.membership});
+                 }else{
+                     this.setState({flexOne:element.membership});
+                 }
                 console.log(element.title);
             }
             else{
@@ -88,6 +106,12 @@ class UpdateFamePwa extends Component {
         console.log(flexThree);
     }
 
+    onChangeFromFour(event){
+        let flexFour = event.target.value;
+        this.setState({flexThree:flexFour});
+        console.log(flexFour);
+    }
+
     onChangeType(event) {
         //console.log(event.target.value);
         //this.type = event.target.value;
@@ -115,32 +139,30 @@ class UpdateFamePwa extends Component {
         let flexOne = this.state.flexOne;
         let flexTwo = this.state.flexTwo;
         let flexThree = this.state.flexThree;
-
-
-        let path = "/add-fame";
+        let flexFour = this.state.flexFour;
+        let id = this.state.id;
+        let path = "/update-fame";
 
         let config = {
             Headers:{'content-type': 'multipart/form-data'}
         }
 
         let formData = new FormData();
+        formData.append('id',id);
         formData.append('type',type);
         formData.append('flexOne',flexOne);
         formData.append('flexTwo',flexTwo);
         formData.append('flexThree',flexThree);
-
+        formData.append('flexFour',flexFour);
+        //alert(type);
         Axios.post(path,formData,config).then(function (response) {
             if(response.data == "200"){
-                alert("New "+printData+" information has been added.");
+                alert(printData+" information has been updated.");
                 window.location.href="/hall-of-fame";
             }else if (response.data == "304"){
-                alert("New "+printData+" information is not added! Please, try again.");
+                alert(printData+" information is not updated! Please, try again.");
             }
-            else if (response.data == "400"){
-                alert("Sorry! Bad request. Please, try again.");
-            }else if (response.data == "401"){
-                alert("Authorization problem! Please, login & try again.");
-            }else{
+            else{
                 alert("ERROR UNKNOWN (TEAM GLITCH).");
             }
         }).catch(function (error) {
@@ -185,54 +207,65 @@ class UpdateFamePwa extends Component {
             let formOne;
             let formTwo;
             let formThree;
+            let formFour;
+
             if (type == "t&c") {
                 formOne =  <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label> Training Title</Form.Label>
-                    <Form.Control onChange={this.onChangeFromOne} type="text" placeholder="Training Title" />
+                    <Form.Control onChange={this.onChangeFromOne} value={this.state.flexOne} type="text" placeholder="Training Title" />
                 </Form.Group>;
                 formTwo = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Institute</Form.Label>
-                    <Form.Control onChange={this.onChangeFromTwo} type="text" placeholder="Name of the institute or authority" />
+                    <Form.Control onChange={this.onChangeFromTwo} value={this.state.flexTwo} type="text" placeholder="Name of the institute or authority" />
                 </Form.Group>;
                 formThree = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Instructor</Form.Label>
-                    <Form.Control onChange={this.onChangeFromThree} type="text" placeholder="Name of your instructor" />
+                    <Form.Control onChange={this.onChangeFromThree} value={this.state.flexThree} type="text" placeholder="Name of your instructor" />
                 </Form.Group>;
-
+                formFour = <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Year</Form.Label>
+                    <Form.Control type="number" onChange={this.onChangeFromFour} value={this.state.flexFour} placeholder="Year of certification" />
+                </Form.Group>;
+                //onChange={this.onChangeFromThree} value={this.state.flexThree}
             } else if(type == "a&r") {
                 formOne = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Award Title</Form.Label>
-                    <Form.Control onChange={this.onChangeFromOne} type="text" placeholder="Award Title" />
+                    <Form.Control onChange={this.onChangeFromOne} value={this.state.flexOne} type="text" placeholder="Award Title" />
                 </Form.Group>;
                 formTwo = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Position</Form.Label>
-                    <Form.Control onChange={this.onChangeFromTwo} type="text" placeholder="The position you have achieved" />
+                    <Form.Control onChange={this.onChangeFromTwo} value={this.state.flexTwo} type="text" placeholder="The position you have achieved" />
                 </Form.Group>;
                 formThree = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Contest</Form.Label>
-                    <Form.Control onChange={this.onChangeFromThree} type="text" placeholder="Name or type of your contest/event" />
+                    <Form.Control onChange={this.onChangeFromThree} value={this.state.flexThree} type="text" placeholder="Name or type of your contest/event" />
+                </Form.Group>;
+
+                formFour = <Form.Group controlId="exampleForm.ControlInput1">
+                    <Form.Label>Year</Form.Label>
+                    <Form.Control type="number" onChange={this.onChangeFromFour} value={this.state.flexFour} placeholder="Year of recognition"/>
                 </Form.Group>;
 
             }else if(type == "member") {
                 formOne = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Membership Title</Form.Label>
-                    <Form.Control onChange={this.onChangeFromOne} type="text" placeholder="Membership Title" />
+                    <Form.Control onChange={this.onChangeFromOne} value={this.state.flexOne} type="text" placeholder="Membership Title" />
                 </Form.Group>;
-                formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
-                formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
+                //formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
+                //formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
 
             }else{
                 formOne = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Publication Title</Form.Label>
-                    <Form.Control onChange={this.onChangeFromOne} type="text" placeholder="The title name of your article/journal/conference paper" />
+                    <Form.Control onChange={this.onChangeFromOne} value={this.state.flexOne} type="text" placeholder="The title name of your article/journal/conference paper" />
                 </Form.Group>;
                 formTwo = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Publisher</Form.Label>
-                    <Form.Control onChange={this.onChangeFromTwo} type="text" placeholder="The name of the publisher" />
+                    <Form.Control onChange={this.onChangeFromTwo} value={this.state.flexTwo} type="text" placeholder="The name of the publisher" />
                 </Form.Group>;
                 formThree = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Important Links</Form.Label>
-                    <Form.Control onChange={this.onChangeFromThree} type="url" placeholder="Related URL of your publication" pattern="https?://.+" required />
+                    <Form.Control onChange={this.onChangeFromThree} value={this.state.flexThree} type="url" placeholder="Related URL of your publication" pattern="https?://.+" required />
                 </Form.Group>;
             }
             return (
@@ -251,7 +284,7 @@ class UpdateFamePwa extends Component {
 
                                     {formThree}
 
-
+                                    {formFour}
                                 </Form>
                             </Col>
                         </Row>

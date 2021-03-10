@@ -28,6 +28,8 @@ class HallOfFameCompo extends Component {
         }
 
     }
+
+
     componentDidMount() {
         Axios.get('/get-tnc').then((response)=>{
             if(response.status==200){
@@ -105,13 +107,13 @@ class HallOfFameCompo extends Component {
 
             const Certifications = TnC.map(TnC=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] </sub> <Button href={`/del-fame/${TnC.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${TnC.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] {TnC.year} </sub> <Button href={`/del-fame/${TnC.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${TnC.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
                     </span>
             })
 
             const Awards = AnR.map(AnR=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} </sub> <Button href={`/del-fame/${AnR.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${AnR.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} {AnR.year} </sub> <Button href={`/del-fame/${AnR.id}`} variant="danger"><FontAwesomeIcon icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${AnR.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
                     </span>
             })
             const Members = Member.map(Member=> {

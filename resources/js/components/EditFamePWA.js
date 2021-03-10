@@ -28,10 +28,12 @@ class EditFamePwa extends Component {
             flexOne:"",
             flexTwo:"",
             flexThree:"",
+            flexFour:"",
         };
         this.onChangeFromOne = this.onChangeFromOne.bind(this);
         this.onChangeFromTwo = this.onChangeFromTwo.bind(this);
         this.onChangeFromThree = this.onChangeFromThree.bind(this);
+        this.onChangeFromFour = this.onChangeFromFour.bind(this);
         this.onAddClick = this.onAddClick.bind(this);
     }
     onChangeFromOne(event){
@@ -51,6 +53,12 @@ class EditFamePwa extends Component {
         let flexThree = event.target.value;
         this.setState({flexThree:flexThree});
         console.log(flexThree);
+    }
+
+    onChangeFromFour(event){
+        let flexFour = event.target.value;
+        this.setState({flexFour:flexFour});
+        console.log(flexFour);
     }
 
     onChangeType(event) {
@@ -78,7 +86,7 @@ class EditFamePwa extends Component {
         let flexOne = this.state.flexOne;
         let flexTwo = this.state.flexTwo;
         let flexThree = this.state.flexThree;
-
+        let flexFour = this.state.flexFour;
 
         let path = "/add-fame";
 
@@ -91,6 +99,7 @@ class EditFamePwa extends Component {
         formData.append('flexOne',flexOne);
         formData.append('flexTwo',flexTwo);
         formData.append('flexThree',flexThree);
+        formData.append('flexFour',flexFour);
 
         Axios.post(path,formData,config).then(function (response) {
             if(response.data == "200"){
@@ -114,9 +123,11 @@ class EditFamePwa extends Component {
 
     render() {
         const type = this.state.type;
+
         let formOne;
         let formTwo;
         let formThree;
+        let formFour;
         if (type == "t&c") {
             formOne =  <Form.Group controlId="exampleForm.ControlInput1">
                             <Form.Label> Training Title</Form.Label>
@@ -130,6 +141,10 @@ class EditFamePwa extends Component {
                             <Form.Label>Instructor</Form.Label>
                             <Form.Control onChange={this.onChangeFromThree} type="text" placeholder="Name of your instructor" />
                         </Form.Group>;
+            formFour = <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Year</Form.Label>
+                <Form.Control onChange={this.onChangeFromFour} placeholder="Year of certification" type="number"/>
+            </Form.Group>;
 
         } else if(type == "a&r") {
             formOne = <Form.Group controlId="exampleForm.ControlInput1">
@@ -144,14 +159,18 @@ class EditFamePwa extends Component {
                 <Form.Label>Contest</Form.Label>
                 <Form.Control onChange={this.onChangeFromThree} type="text" placeholder="Name or type of your contest/event" />
             </Form.Group>;
+            formFour = <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Year</Form.Label>
+                <Form.Control onChange={this.onChangeFromFour} placeholder="Year of recognition" type="number"/>
+            </Form.Group>;
 
         }else if(type == "member") {
             formOne = <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Membership Title</Form.Label>
                 <Form.Control onChange={this.onChangeFromOne} type="text" placeholder="Membership Title" />
             </Form.Group>;
-            formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
-            formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
+            //formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
+            //formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
 
         }else{
             formOne = <Form.Group controlId="exampleForm.ControlInput1">
@@ -165,6 +184,10 @@ class EditFamePwa extends Component {
             formThree = <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Label>Important Links</Form.Label>
                 <Form.Control onChange={this.onChangeFromThree} type="url" placeholder="Related URL of your publication" pattern="https?://.+" required />
+            </Form.Group>;
+            formFour = <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Label>Year</Form.Label>
+                <Form.Control placeholder="Year of publication" type="number"/>
             </Form.Group>;
         }
         return (
@@ -189,7 +212,7 @@ class EditFamePwa extends Component {
 
                                     {formThree}
 
-
+                                    {formFour}
                             </Form>
                         </Col>
                     </Row>

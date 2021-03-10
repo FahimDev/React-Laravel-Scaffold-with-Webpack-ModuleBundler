@@ -48,7 +48,7 @@ class Menu extends Component {
             <Fragment>
                 <title>{this.props.title}</title>
                 <Navbar  expand="lg" className="fixed-top shadow-sm bg-white mb-5 py-3" variant="light" bg="white">
-                    <Navbar.Brand onClick={this.showHideSideNav}  href="#"><FontAwesomeIcon icon={faBars} /></Navbar.Brand>
+                    <Navbar.Brand onClick={this.showHideSideNav}  href=""><FontAwesomeIcon icon={faBars} /></Navbar.Brand>
                     <b>Mobile Application Support</b>
                 </Navbar>
 

@@ -26,6 +26,8 @@ Route::get('/get-by-id/{id}','HallOfFame@getByID')->middleware('astronautCheck')
 
 Route::post('/add-fame','HallOfFame@trainCertCreate')->middleware('astronautCheck');
 
+Route::post('/update-fame','HallOfFame@updateFame')->middleware('astronautCheck');
+
 Route::get('/del-fame/{id}','HallOfFame@trainCertDelete')->middleware('astronautCheck');  //when we send parameters through the link we should use GET [unless we are updating]
 //---------------------------------------------------------------------------
 

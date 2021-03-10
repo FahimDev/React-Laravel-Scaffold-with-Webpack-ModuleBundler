@@ -74769,11 +74769,13 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       type: "t&c",
       flexOne: "",
       flexTwo: "",
-      flexThree: ""
+      flexThree: "",
+      flexFour: ""
     };
     _this.onChangeFromOne = _this.onChangeFromOne.bind(_assertThisInitialized(_this));
     _this.onChangeFromTwo = _this.onChangeFromTwo.bind(_assertThisInitialized(_this));
     _this.onChangeFromThree = _this.onChangeFromThree.bind(_assertThisInitialized(_this));
+    _this.onChangeFromFour = _this.onChangeFromFour.bind(_assertThisInitialized(_this));
     _this.onAddClick = _this.onAddClick.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -74807,6 +74809,15 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       console.log(flexThree);
     }
   }, {
+    key: "onChangeFromFour",
+    value: function onChangeFromFour(event) {
+      var flexFour = event.target.value;
+      this.setState({
+        flexFour: flexFour
+      });
+      console.log(flexFour);
+    }
+  }, {
     key: "onChangeType",
     value: function onChangeType(event) {
       //console.log(event.target.value);
@@ -74834,6 +74845,7 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       var flexOne = this.state.flexOne;
       var flexTwo = this.state.flexTwo;
       var flexThree = this.state.flexThree;
+      var flexFour = this.state.flexFour;
       var path = "/add-fame";
       var config = {
         Headers: {
@@ -74845,6 +74857,7 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       formData.append('flexOne', flexOne);
       formData.append('flexTwo', flexTwo);
       formData.append('flexThree', flexThree);
+      formData.append('flexFour', flexFour);
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(path, formData, config).then(function (response) {
         if (response.data == "200") {
           alert("New " + printData + " information has been added.");
@@ -74870,6 +74883,7 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       var formOne;
       var formTwo;
       var formThree;
+      var formFour;
 
       if (type == "t&c") {
         formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
@@ -74893,6 +74907,13 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
           type: "text",
           placeholder: "Name of your instructor"
         }));
+        formFour = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          controlId: "exampleForm.ControlInput1"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+          onChange: this.onChangeFromFour,
+          placeholder: "Year of certification",
+          type: "number"
+        }));
       } else if (type == "a&r") {
         formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           controlId: "exampleForm.ControlInput1"
@@ -74915,6 +74936,13 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
           type: "text",
           placeholder: "Name or type of your contest/event"
         }));
+        formFour = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          controlId: "exampleForm.ControlInput1"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+          onChange: this.onChangeFromFour,
+          placeholder: "Year of recognition",
+          type: "number"
+        }));
       } else if (type == "member") {
         formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           controlId: "exampleForm.ControlInput1"
@@ -74922,17 +74950,8 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
           onChange: this.onChangeFromOne,
           type: "text",
           placeholder: "Membership Title"
-        }));
-        formTwo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Badge__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          variant: "dark"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faIdCardAlt"]
-        }));
-        formThree = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Badge__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          variant: "dark"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-          icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faIdCard"]
-        }));
+        })); //formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
+        //formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
       } else {
         formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
           controlId: "exampleForm.ControlInput1"
@@ -74957,6 +74976,12 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
           pattern: "https?://.+",
           required: true
         }));
+        formFour = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+          controlId: "exampleForm.ControlInput1"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+          placeholder: "Year of publication",
+          type: "number"
+        }));
       }
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
@@ -74977,7 +75002,7 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
         value: "pub"
       }, "Publication"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "member"
-      }, "Membership"))), formOne, formTwo, formThree))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+      }, "Membership"))), formOne, formTwo, formThree, formFour))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
         lg: 4,
         md: 4,
         sm: 4
@@ -75200,7 +75225,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
         var Certifications = TnC.map(function (TnC) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
-          }), " ", TnC.title, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", TnC.institution, " [", TnC.instructor, "] "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), " ", TnC.title, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", TnC.institution, " [", TnC.instructor, "] ", TnC.year, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/del-fame/".concat(TnC.id),
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
@@ -75215,7 +75240,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
         var Awards = AnR.map(function (AnR) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
-          }), " ", AnR.title, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, AnR.prizePosition), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", AnR.prizeCategory, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
+          }), " ", AnR.title, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, AnR.prizePosition), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", AnR.prizeCategory, " ", AnR.year, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/del-fame/".concat(AnR.id),
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
@@ -75579,7 +75604,7 @@ var Menu = /*#__PURE__*/function (_Component) {
         bg: "white"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"].Brand, {
         onClick: this.showHideSideNav,
-        href: "#"
+        href: ""
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faBars"]
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Mobile Application Support")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76008,6 +76033,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
       flexOne: "",
       flexTwo: "",
       flexThree: "",
+      flexFour: "",
       element: [],
       content: "",
       isLoading: true,
@@ -76042,6 +76068,56 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
           _this2.setState({
             type: element.type
           });
+
+          if (_this2.state.type == "t&c") {
+            _this2.setState({
+              flexOne: element.title
+            });
+
+            _this2.setState({
+              flexTwo: element.institution
+            });
+
+            _this2.setState({
+              flexThree: element.instructor
+            });
+
+            _this2.setState({
+              flexFour: element.year
+            });
+          } else if (_this2.state.type == "a&r") {
+            _this2.setState({
+              flexOne: element.title
+            });
+
+            _this2.setState({
+              flexTwo: element.prizePosition
+            });
+
+            _this2.setState({
+              flexThree: element.prizeCategory
+            });
+
+            _this2.setState({
+              flexFour: element.year
+            });
+          } else if (_this2.state.type == "pub") {
+            _this2.setState({
+              flexOne: element.title
+            });
+
+            _this2.setState({
+              flexTwo: element.institution
+            });
+
+            _this2.setState({
+              flexThree: element.membership
+            });
+          } else {
+            _this2.setState({
+              flexOne: element.membership
+            });
+          }
 
           console.log(element.title);
         } else {
@@ -76086,6 +76162,15 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
       console.log(flexThree);
     }
   }, {
+    key: "onChangeFromFour",
+    value: function onChangeFromFour(event) {
+      var flexFour = event.target.value;
+      this.setState({
+        flexThree: flexFour
+      });
+      console.log(flexFour);
+    }
+  }, {
     key: "onChangeType",
     value: function onChangeType(event) {
       //console.log(event.target.value);
@@ -76113,27 +76198,28 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
       var flexOne = this.state.flexOne;
       var flexTwo = this.state.flexTwo;
       var flexThree = this.state.flexThree;
-      var path = "/add-fame";
+      var flexFour = this.state.flexFour;
+      var id = this.state.id;
+      var path = "/update-fame";
       var config = {
         Headers: {
           'content-type': 'multipart/form-data'
         }
       };
       var formData = new FormData();
+      formData.append('id', id);
       formData.append('type', type);
       formData.append('flexOne', flexOne);
       formData.append('flexTwo', flexTwo);
       formData.append('flexThree', flexThree);
+      formData.append('flexFour', flexFour); //alert(type);
+
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(path, formData, config).then(function (response) {
         if (response.data == "200") {
-          alert("New " + printData + " information has been added.");
+          alert(printData + " information has been updated.");
           window.location.href = "/hall-of-fame";
         } else if (response.data == "304") {
-          alert("New " + printData + " information is not added! Please, try again.");
-        } else if (response.data == "400") {
-          alert("Sorry! Bad request. Please, try again.");
-        } else if (response.data == "401") {
-          alert("Authorization problem! Please, login & try again.");
+          alert(printData + " information is not updated! Please, try again.");
         } else {
           alert("ERROR UNKNOWN (TEAM GLITCH).");
         }
@@ -76167,12 +76253,14 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
         var formOne;
         var formTwo;
         var formThree;
+        var formFour;
 
         if (type == "t&c") {
           formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, " Training Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromOne,
+            value: this.state.flexOne,
             type: "text",
             placeholder: "Training Title"
           }));
@@ -76180,6 +76268,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Institute"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromTwo,
+            value: this.state.flexTwo,
             type: "text",
             placeholder: "Name of the institute or authority"
           }));
@@ -76187,14 +76276,24 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Instructor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromThree,
+            value: this.state.flexThree,
             type: "text",
             placeholder: "Name of your instructor"
           }));
+          formFour = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+            controlId: "exampleForm.ControlInput1"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+            type: "number",
+            onChange: this.onChangeFromFour,
+            value: this.state.flexFour,
+            placeholder: "Year of certification"
+          })); //onChange={this.onChangeFromThree} value={this.state.flexThree}
         } else if (type == "a&r") {
           formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Award Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromOne,
+            value: this.state.flexOne,
             type: "text",
             placeholder: "Award Title"
           }));
@@ -76202,6 +76301,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromTwo,
+            value: this.state.flexTwo,
             type: "text",
             placeholder: "The position you have achieved"
           }));
@@ -76209,32 +76309,34 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Contest"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromThree,
+            value: this.state.flexThree,
             type: "text",
             placeholder: "Name or type of your contest/event"
+          }));
+          formFour = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
+            controlId: "exampleForm.ControlInput1"
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Year"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
+            type: "number",
+            onChange: this.onChangeFromFour,
+            value: this.state.flexFour,
+            placeholder: "Year of recognition"
           }));
         } else if (type == "member") {
           formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Membership Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromOne,
+            value: this.state.flexOne,
             type: "text",
             placeholder: "Membership Title"
-          }));
-          formTwo = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Badge__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            variant: "dark"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faIdCardAlt"]
-          }));
-          formThree = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Badge__WEBPACK_IMPORTED_MODULE_8__["default"], {
-            variant: "dark"
-          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
-            icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faIdCard"]
-          }));
+          })); //formTwo = <Badge variant="dark"><FontAwesomeIcon icon={faIdCardAlt} /></Badge>;
+          //formThree = <Badge variant="dark"><FontAwesomeIcon icon={faIdCard} /></Badge>;
         } else {
           formOne = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Group, {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Publication Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromOne,
+            value: this.state.flexOne,
             type: "text",
             placeholder: "The title name of your article/journal/conference paper"
           }));
@@ -76242,6 +76344,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Publisher"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromTwo,
+            value: this.state.flexTwo,
             type: "text",
             placeholder: "The name of the publisher"
           }));
@@ -76249,6 +76352,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
             controlId: "exampleForm.ControlInput1"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Important Links"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Control, {
             onChange: this.onChangeFromThree,
+            value: this.state.flexThree,
             type: "url",
             placeholder: "Related URL of your publication",
             pattern: "https?://.+",
@@ -76264,7 +76368,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Form"].Label, null, "Achievement Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_9__["default"], {
           className: "text-center",
           variant: "dark"
-        }, print), formOne, formTwo, formThree))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
+        }, print), formOne, formTwo, formThree, formFour))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["Col"], {
           lg: 4,
           md: 4,
           sm: 4
