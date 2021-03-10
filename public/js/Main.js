@@ -74861,7 +74861,12 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(path, formData, config).then(function (response) {
         if (response.data == "200") {
           alert("New " + printData + " information has been added.");
-          window.location.href = "/hall-of-fame";
+
+          if (window.location.pathname == "/pwa-fame2") {
+            window.location.href = "/pwa-fame0";
+          } else {
+            window.location.href = "/hall-of-fame";
+          }
         } else if (response.data == "304") {
           alert("New " + printData + " information is not added! Please, try again.");
         } else if (response.data == "400") {
@@ -75007,7 +75012,7 @@ var EditFamePwa = /*#__PURE__*/function (_Component) {
         md: 4,
         sm: 4
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-        to: "/hall-of-fame"
+        to: window.location.pathname == "/pwa-fame2" ? "/pwa-fame0" : "/hall-of-fame"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
         href: "",
         size: "lg",
@@ -75279,7 +75284,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
             name: TnC.title,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/edit-hall-of-fame/".concat(TnC.id),
+            href: window.location.pathname == "/pwa-fame0" ? "/pwa-fame1/".concat(TnC.id) : "/edit-hall-of-fame/".concat(TnC.id),
             variant: "warning"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faEdit"]
@@ -75298,7 +75303,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
             name: AnR.title,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/edit-hall-of-fame/".concat(AnR.id),
+            href: window.location.pathname == "/pwa-fame0" ? "/pwa-fame1/".concat(AnR.id) : "/edit-hall-of-fame/".concat(AnR.id),
             variant: "warning"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faEdit"]
@@ -75317,7 +75322,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
             name: Member.membership,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/edit-hall-of-fame/".concat(Member.id),
+            href: window.location.pathname == "/pwa-fame0" ? "/pwa-fame1/".concat(Member.id) : "/edit-hall-of-fame/".concat(Member.id),
             variant: "warning"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faEdit"]
@@ -75336,18 +75341,15 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
             id: Publication.id,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/edit-hall-of-fame/".concat(Publication.id),
+            href: window.location.pathname == "/pwa-fame0" ? "/pwa-fame1/".concat(Publication.id) : "/edit-hall-of-fame/".concat(Publication.id),
             variant: "warning"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faEdit"]
           })), "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null));
         }); //------------------------------------------
 
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Menu__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], {
-          fluid: true,
-          className: "p-0 mt-5"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Link"], {
-          to: "/add-hall-of-fame"
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Row"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__["Link"], {
+          to: window.location.pathname == "/pwa-fame0" ? "/pwa-fame2" : "/add-hall-of-fame"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
           variant: "primary"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
@@ -75386,7 +75388,7 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), Members)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Tab__WEBPACK_IMPORTED_MODULE_5__["default"], {
           eventKey: "dash",
           title: "-o-"
-        }))))))))));
+        })))))))));
       }
     }
   }]);
@@ -75499,7 +75501,13 @@ var LoginForm = /*#__PURE__*/function (_Component) {
         }
       }).then(function (response) {
         if (response.data == "200") {
-          window.location.href = "/ground-station";
+          if (window.location.pathname == "/pwa-log-fame") {
+            window.location.href = "/pwa-fame0";
+          } else if (window.location.pathname == "/pwa-log-skill") {
+            window.location.href = "/pwa-skill0";
+          } else {
+            window.location.href = "/ground-station";
+          }
         } else if (response.data == "401") {
           alert("Wrong password!Please, try again.");
         } else if (response.data == "404") {
@@ -76096,6 +76104,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
       flexFour: "",
       element: [],
       content: "",
+      accessType: "",
       isLoading: true,
       isError: false
     };
@@ -76111,6 +76120,11 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      var accessType = window.location.pathname;
+      console.log(accessType[1]);
+      this.setState({
+        accessType: accessType[1]
+      });
       var getID = this.state.id;
       var url = '/get-by-id/' + getID + '';
       console.log("----------->" + url);
@@ -76277,7 +76291,12 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.post(path, formData, config).then(function (response) {
         if (response.data == "200") {
           alert(printData + " information has been updated.");
-          window.location.href = "/hall-of-fame";
+
+          if (window.location.pathname == "/pwa-fame1") {
+            window.location.href = "/pwa-fame0";
+          } else {
+            window.location.href = "/hall-of-fame";
+          }
         } else if (response.data == "304") {
           alert(printData + " information is not updated! Please, try again.");
         } else {
@@ -76433,7 +76452,7 @@ var UpdateFamePwa = /*#__PURE__*/function (_Component) {
           md: 4,
           sm: 4
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-          to: "/hall-of-fame"
+          to: this.state.accessType == "p" ? "/pwa-fame0" : "/hall-of-fame"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
           href: "",
           size: "lg",
@@ -77181,6 +77200,80 @@ var LandingZone = /*#__PURE__*/function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/PWA-fame1.js":
+/*!*****************************************!*\
+  !*** ./resources/js/pages/PWA-fame1.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Menu */ "./resources/js/components/Menu.js");
+/* harmony import */ var _components_UpdateFamePWA__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/UpdateFamePWA */ "./resources/js/components/UpdateFamePWA.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var PwaFame1 = /*#__PURE__*/function (_Component) {
+  _inherits(PwaFame1, _Component);
+
+  var _super = _createSuper(PwaFame1);
+
+  function PwaFame1(_ref) {
+    var _this;
+
+    var match = _ref.match;
+
+    _classCallCheck(this, PwaFame1);
+
+    _this = _super.call(this);
+    _this.state = {
+      updateID: match.params.editID
+    };
+    return _this;
+  }
+
+  _createClass(PwaFame1, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_UpdateFamePWA__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        id: this.state.updateID
+      }));
+    }
+  }]);
+
+  return PwaFame1;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (PwaFame1);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Qualification.js":
 /*!*********************************************!*\
   !*** ./resources/js/pages/Qualification.js ***!
@@ -77703,6 +77796,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_ResearchList__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../pages/ResearchList */ "./resources/js/pages/ResearchList.js");
 /* harmony import */ var _pages_EditFame__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../pages/EditFame */ "./resources/js/pages/EditFame.js");
 /* harmony import */ var _pages_UpdateFame__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../pages/UpdateFame */ "./resources/js/pages/UpdateFame.js");
+/* harmony import */ var _components_LoginForm__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/LoginForm */ "./resources/js/components/LoginForm.js");
+/* harmony import */ var _components_HallOfFameCompo__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/HallOfFameCompo */ "./resources/js/components/HallOfFameCompo.js");
+/* harmony import */ var _pages_PWA_fame1__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../pages/PWA-fame1 */ "./resources/js/pages/PWA-fame1.js");
+/* harmony import */ var _components_EditFamePWA__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/EditFamePWA */ "./resources/js/components/EditFamePWA.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -77740,6 +77837,12 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
+
+ //import pwaSkill from "../components/HallOfFameCompo";
+//import pwaEditSkill from "../components/UpdateFamePWA";
+//import pwaAddSkill from "../components/EditFamePWA";
 
 var AppRoutes = /*#__PURE__*/function (_Component) {
   _inherits(AppRoutes, _Component);
@@ -77807,6 +77910,26 @@ var AppRoutes = /*#__PURE__*/function (_Component) {
         exact: true,
         path: "/edit-hall-of-fame/:editID",
         component: _pages_UpdateFame__WEBPACK_IMPORTED_MODULE_14__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/pwa-log-fame",
+        component: _components_LoginForm__WEBPACK_IMPORTED_MODULE_15__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/pwa-log-skill",
+        component: _components_LoginForm__WEBPACK_IMPORTED_MODULE_15__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/pwa-fame0",
+        component: _components_HallOfFameCompo__WEBPACK_IMPORTED_MODULE_16__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/pwa-fame1/:editID",
+        component: _pages_PWA_fame1__WEBPACK_IMPORTED_MODULE_17__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/pwa-fame2",
+        component: _components_EditFamePWA__WEBPACK_IMPORTED_MODULE_18__["default"]
       })));
     }
   }]);

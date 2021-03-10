@@ -41,8 +41,15 @@ class LoginForm extends Component {
                 password,
             }}).then(function (response) {
             if(response.data == "200"){
-
-                window.location.href="/ground-station";
+                if(window.location.pathname == "/pwa-log-fame"){
+                    window.location.href="/pwa-fame0";
+                }
+                else if(window.location.pathname == "/pwa-log-skill"){
+                    window.location.href="/pwa-skill0";
+                }
+                else {
+                    window.location.href="/ground-station";
+                }
 
             }else if (response.data == "401"){
                 alert("Wrong password!Please, try again.");

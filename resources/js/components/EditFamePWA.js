@@ -104,7 +104,11 @@ class EditFamePwa extends Component {
         Axios.post(path,formData,config).then(function (response) {
             if(response.data == "200"){
                 alert("New "+printData+" information has been added.");
-                window.location.href="/hall-of-fame";
+                if(window.location.pathname == "/pwa-fame2"){
+                    window.location.href="/pwa-fame0";
+                }else {
+                    window.location.href="/hall-of-fame";
+                }
             }else if (response.data == "304"){
                 alert("New "+printData+" information is not added! Please, try again.");
             }
@@ -218,8 +222,9 @@ class EditFamePwa extends Component {
                     </Row>
                     <Row>
                         <Col lg={4} md={4} sm={4}>
-                            <Link to="/hall-of-fame"><Button href='' size="lg" variant="danger" block><FontAwesomeIcon icon={faArrowAltCircleLeft} /> <span> Cancel </span></Button></Link>
+                            <Link to={window.location.pathname == "/pwa-fame2"?"/pwa-fame0":"/hall-of-fame"} ><Button href='' size="lg" variant="danger" block><FontAwesomeIcon icon={faArrowAltCircleLeft} /> <span> Cancel </span></Button></Link>
                         </Col>
+
                         <Col lg={8} md={8} sm={8}>
                             <Button href='' size="lg" onClick={this.onAddClick} variant="success" block><FontAwesomeIcon icon={faPlusSquare} /> <span> Submit </span></Button>
                         </Col>

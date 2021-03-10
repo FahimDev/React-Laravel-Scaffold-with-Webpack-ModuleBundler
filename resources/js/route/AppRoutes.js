@@ -13,6 +13,14 @@ import edu from "../pages/Educaion";
 import research from "../pages/ResearchList";
 import addFame from "../pages/EditFame";
 import editFame from "../pages/UpdateFame";
+import pwaLog from "../components/LoginForm";
+import pwaFame from "../components/HallOfFameCompo";
+import pwaEditFame from "../pages/PWA-fame1";
+import pwaAddFame from "../components/EditFamePWA";
+//import pwaSkill from "../components/HallOfFameCompo";
+//import pwaEditSkill from "../components/UpdateFamePWA";
+//import pwaAddSkill from "../components/EditFamePWA";
+
 class AppRoutes extends Component {
     render() {
         return (
@@ -31,6 +39,11 @@ class AppRoutes extends Component {
                     <Route exact path="/research-list" component={research}/>
                     <Route exact path="/add-hall-of-fame" component={addFame}/>
                     <Route exact path="/edit-hall-of-fame/:editID" component={editFame}/>
+                    <Route exact path="/pwa-log-fame" component={pwaLog}/>
+                    <Route exact path="/pwa-log-skill" component={pwaLog}/>
+                    <Route exact path="/pwa-fame0" component={pwaFame}/>
+                    <Route exact path="/pwa-fame1/:editID" component={pwaEditFame}/>
+                    <Route exact path="/pwa-fame2" component={pwaAddFame}/>
                 </Switch>
             </Fragment>
         );

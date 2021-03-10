@@ -150,24 +150,24 @@ class HallOfFameCompo extends Component {
 //href={`/del-fame/${TnC.id}`}
             const Certifications = TnC.map(TnC=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] {TnC.year} </sub> <Button onClick={this.onDelClick} id={TnC.id} name={TnC.title} variant="danger"><FontAwesomeIcon id={TnC.id} name={TnC.title} icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${TnC.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] {TnC.year} </sub> <Button onClick={this.onDelClick} id={TnC.id} name={TnC.title} variant="danger"><FontAwesomeIcon id={TnC.id} name={TnC.title} icon={faTrash} /></Button><Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${TnC.id}`:`/edit-hall-of-fame/${TnC.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
                     </span>
             })
 
             const Awards = AnR.map(AnR=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} {AnR.year} </sub> <Button onClick={this.onDelClick} id={AnR.id} name={AnR.title} variant="danger"><FontAwesomeIcon id={AnR.id} name={AnR.title} icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${AnR.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {AnR.title}: <i>{AnR.prizePosition}</i> <sub> {AnR.prizeCategory} {AnR.year} </sub> <Button onClick={this.onDelClick} id={AnR.id} name={AnR.title} variant="danger"><FontAwesomeIcon id={AnR.id} name={AnR.title} icon={faTrash} /></Button><Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${AnR.id}`:`/edit-hall-of-fame/${AnR.id}`}  variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
                     </span>
             })
             const Members = Member.map(Member=> {
                 return <span>
-                        <ListGroup.Item><FontAwesomeIcon icon={faArrowAltCircleRight} /> {Member.membership} <Button onClick={this.onDelClick} id={Member.id} name={Member.membership} variant="danger"><FontAwesomeIcon id={Member.id} name={Member.membership}  icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${Member.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> </ListGroup.Item>
+                        <ListGroup.Item><FontAwesomeIcon icon={faArrowAltCircleRight} /> {Member.membership} <Button onClick={this.onDelClick} id={Member.id} name={Member.membership} variant="danger"><FontAwesomeIcon id={Member.id} name={Member.membership}  icon={faTrash} /></Button><Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${Member.id}`:`/edit-hall-of-fame/${Member.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> </ListGroup.Item>
                     </span>
             })
 
             const Publications = Publication.map(Publication=> {
                 return <span>
-                        <FontAwesomeIcon icon={faArrowAltCircleRight} /> {Publication.title}: <i>{Publication.institution}</i> <sub> {Publication.membership} </sub> <Button onClick={this.onDelClick} name={Publication.title} id={Publication.id} variant="danger"><FontAwesomeIcon name={Publication.title} id={Publication.id} icon={faTrash} /></Button><Button href={`/edit-hall-of-fame/${Publication.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
+                        <FontAwesomeIcon icon={faArrowAltCircleRight} /> {Publication.title}: <i>{Publication.institution}</i> <sub> {Publication.membership} </sub> <Button onClick={this.onDelClick} name={Publication.title} id={Publication.id} variant="danger"><FontAwesomeIcon name={Publication.title} id={Publication.id} icon={faTrash} /></Button><Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${Publication.id}`:`/edit-hall-of-fame/${Publication.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button>  <br/>
                     </span>
             })
 
@@ -175,10 +175,10 @@ class HallOfFameCompo extends Component {
             //------------------------------------------
             return (
                 <Fragment>
-                    <Menu>
-                        <Container fluid={true} className="p-0 mt-5" >
+
+                        <Container>
                             <Row>
-                                <Link to="/add-hall-of-fame"><Button variant="primary"><FontAwesomeIcon icon={faPlusCircle} /> <span> Add New </span> </Button></Link>
+                                <Link  to={window.location.pathname == "/pwa-fame0"?"/pwa-fame2":"/add-hall-of-fame"}><Button variant="primary"><FontAwesomeIcon icon={faPlusCircle} /> <span> Add New </span> </Button></Link>
                                 <Col lg={12} md={12} sm={12} >
                                     <Card className="textStyle" style={{marginTop:"2rem"}} >
                                         <Card.Header>Achievement</Card.Header>
@@ -213,7 +213,7 @@ class HallOfFameCompo extends Component {
                                 </Col>
                             </Row>
                         </Container>
-                    </Menu>
+
                 </Fragment>
             );
         }
