@@ -75210,8 +75210,51 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "onDelClick",
+    value: function onDelClick(event) {
+      var delID = event.target.id;
+      var delTitle = event.target.name;
+      /*
+      * For any reason The Delete button can not get the
+      * ID & Name when user clicks on the icon
+      * But if user Clicks on the RED Button area
+      * everything works fine.
+      * */
+
+      if (confirm("Are you sure you want to delete ->" + delTitle)) {
+        var path = "/del-fame";
+        var config = {
+          Headers: {
+            'content-type': 'multipart/form-data'
+          }
+        };
+        var formData = new FormData();
+        formData.append('id', delID); //alert(type);
+
+        axios__WEBPACK_IMPORTED_MODULE_6___default.a.post(path, formData, config).then(function (response) {
+          if (response.data == "200") {
+            alert(delTitle + " has been deleted.");
+            window.location.href = "/hall-of-fame";
+          } else if (response.data == "304") {
+            alert(delTitle + " is not deleted! Please, try again.");
+          } else {
+            alert("ERROR UNKNOWN (TEAM GLITCH).");
+          }
+        })["catch"](function (error) {
+          alert(error);
+        }); //event.preventDefault();
+
+        console.log('Delete request has been sent.');
+      } else {
+        // Do nothing!
+        console.log('User cancelled the request');
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       if (this.state.isLoading == true) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Menu__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["Container"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_loadingDiv__WEBPACK_IMPORTED_MODULE_8__["default"], null)));
       } else if (this.state.isError == true) {
@@ -75221,14 +75264,19 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
         var TnC = this.state.TnC;
         var AnR = this.state.AnR;
         var Member = this.state.Member;
-        var Publication = this.state.Publication;
+        var Publication = this.state.Publication; //href={`/del-fame/${TnC.id}`}
+
         var Certifications = TnC.map(function (TnC) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
           }), " ", TnC.title, "  ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", TnC.institution, " [", TnC.instructor, "] ", TnC.year, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/del-fame/".concat(TnC.id),
+            onClick: _this3.onDelClick,
+            id: TnC.id,
+            name: TnC.title,
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+            id: TnC.id,
+            name: TnC.title,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/edit-hall-of-fame/".concat(TnC.id),
@@ -75241,9 +75289,13 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
           }), " ", AnR.title, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, AnR.prizePosition), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", AnR.prizeCategory, " ", AnR.year, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/del-fame/".concat(AnR.id),
+            onClick: _this3.onDelClick,
+            id: AnR.id,
+            name: AnR.title,
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+            id: AnR.id,
+            name: AnR.title,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/edit-hall-of-fame/".concat(AnR.id),
@@ -75256,9 +75308,13 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_3__["default"].Item, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
           }), " ", Member.membership, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/del-fame/".concat(Member.id),
+            onClick: _this3.onDelClick,
+            id: Member.id,
+            name: Member.membership,
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+            id: Member.id,
+            name: Member.membership,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/edit-hall-of-fame/".concat(Member.id),
@@ -75271,9 +75327,13 @@ var HallOfFameCompo = /*#__PURE__*/function (_Component) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faArrowAltCircleRight"]
           }), " ", Publication.title, ": ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, Publication.institution), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("sub", null, " ", Publication.membership, " "), " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-            href: "/del-fame/".concat(Publication.id),
+            onClick: _this3.onDelClick,
+            name: Publication.title,
+            id: Publication.id,
             variant: "danger"
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_10__["FontAwesomeIcon"], {
+            name: Publication.title,
+            id: Publication.id,
             icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faTrash"]
           })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
             href: "/edit-hall-of-fame/".concat(Publication.id),

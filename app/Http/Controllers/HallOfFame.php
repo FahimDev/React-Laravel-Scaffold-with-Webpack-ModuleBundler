@@ -42,13 +42,12 @@ class HallOfFame extends Controller
         return $result;
     }
 
-    function trainCertDelete( $id){
-        //$id=$request->input('id');
+    function trainCertDelete(Request $request){
+        $id =$request->input('id');
         $result=member_earn::where('id','=',$id)->delete();
 
         if($result == true){
-
-            return redirect('/hall-of-fame');
+            return "200"; //Success
         }else{
             return "304"; //Not Modified
         }

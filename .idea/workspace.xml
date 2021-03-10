@@ -4,12 +4,8 @@
     <list default="true" id="e7eb027d-9cf6-426e-926b-3c2e30bbcc88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HallOfFame.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HallOfFame.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/member_earn.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/member_earn.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/EditFamePWA.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditFamePWA.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/HallOfFameCompo.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/HallOfFameCompo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/Menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/UpdateFamePWA.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UpdateFamePWA.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,6 +181,7 @@
       <workItem from="1615224695827" duration="3955000" />
       <workItem from="1615270040846" duration="8605000" />
       <workItem from="1615355024336" duration="3440000" />
+      <workItem from="1615368351937" duration="4385000" />
     </task>
     <servers />
   </component>
@@ -204,10 +201,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1610044079457" />
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1615355028034">
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1615368433081">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1615355028034" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1615368433081" />
     <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1615049125769">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

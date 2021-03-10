@@ -28,9 +28,9 @@ Route::post('/add-fame','HallOfFame@trainCertCreate')->middleware('astronautChec
 
 Route::post('/update-fame','HallOfFame@updateFame')->middleware('astronautCheck');
 
-Route::get('/del-fame/{id}','HallOfFame@trainCertDelete')->middleware('astronautCheck');  //when we send parameters through the link we should use GET [unless we are updating]
+Route::post('/del-fame','HallOfFame@trainCertDelete')->middleware('astronautCheck');
 //---------------------------------------------------------------------------
-
+//when we send parameters through the link we should use GET [unless we are updating]
 //------------------------------MAIL--------------------------------------
 Route::get('/recover-mail/{user}/{key}','recoverPassControl@resetPassWindow');
 Route::post('/recover-mail/{user}/{key}','recoverPassControl@resetPass');
