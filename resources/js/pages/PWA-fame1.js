@@ -12,6 +12,7 @@ class PwaFame1 extends Component {
     render() {
         return (
             <Fragment>
+                <br/>
                     <EditFamePwa id={this.state.updateID}/>
             </Fragment>
         );

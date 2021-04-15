@@ -30,6 +30,18 @@ Route::post('/update-fame','HallOfFame@updateFame')->middleware('astronautCheck'
 
 Route::post('/del-fame','HallOfFame@trainCertDelete')->middleware('astronautCheck');
 //---------------------------------------------------------------------------
+
+//--------------------SKILLS------------------------------------------
+
+Route::get('/get-pe','Qualification@projectExperience')->middleware('astronautCheck');//astronautCheck is created at Kernel
+
+Route::get('/get-s&t','Qualification@softNtool')->middleware('astronautCheck');
+
+Route::get('/get-skill','Qualification@skills')->middleware('astronautCheck');
+
+Route::get('/get-exp-summery','Qualification@expSummery')->middleware('astronautCheck');
+
+//---------------------------------------------------------------------------
 //when we send parameters through the link we should use GET [unless we are updating]
 //------------------------------MAIL--------------------------------------
 Route::get('/recover-mail/{user}/{key}','recoverPassControl@resetPassWindow');

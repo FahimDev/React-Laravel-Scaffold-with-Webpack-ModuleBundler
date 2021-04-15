@@ -183,11 +183,9 @@ class UpdateFamePwa extends Component {
     render() {
         if(this.state.isLoading==true){
             return (
-                <Menu>
                     <Container>
                         <LoadingDiv/>
                     </Container>
-                </Menu>
             )
         }
         else if(this.state.isError==true){

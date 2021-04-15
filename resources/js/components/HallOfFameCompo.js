@@ -126,11 +126,9 @@ class HallOfFameCompo extends Component {
     render() {
         if(this.state.isLoading==true){
             return (
-                <Menu>
                     <Container>
                         <LoadingDiv/>
                     </Container>
-                </Menu>
             )
         }
         else if(this.state.isError==true){
@@ -147,10 +145,16 @@ class HallOfFameCompo extends Component {
             const AnR = this.state.AnR;
             const Member = this.state.Member;
             const Publication = this.state.Publication;
-//href={`/del-fame/${TnC.id}`}
+
             const Certifications = TnC.map(TnC=> {
                 return <span>
-                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] {TnC.year} </sub> <Button onClick={this.onDelClick} id={TnC.id} name={TnC.title} variant="danger"><FontAwesomeIcon id={TnC.id} name={TnC.title} icon={faTrash} /></Button><Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${TnC.id}`:`/edit-hall-of-fame/${TnC.id}`} variant="warning"><FontAwesomeIcon icon={faEdit} /></Button> <br/>
+                    <FontAwesomeIcon icon={faArrowAltCircleRight} /> {TnC.title}  <sub> {TnC.institution} [{TnC.instructor}] {TnC.year} </sub>
+                    <Button onClick={this.onDelClick} id={TnC.id} name={TnC.title} variant="danger">
+                        <FontAwesomeIcon id={TnC.id} name={TnC.title} icon={faTrash} />
+                    </Button>
+                    <Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/${TnC.id}`:`/edit-hall-of-fame/${TnC.id}`} variant="warning">
+                        <FontAwesomeIcon icon={faEdit} />
+                    </Button> <br/>
                     </span>
             })
 
