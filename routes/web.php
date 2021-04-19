@@ -41,6 +41,10 @@ Route::get('/get-skill','Qualification@skills')->middleware('astronautCheck');
 
 Route::get('/get-exp-summery','Qualification@expSummery')->middleware('astronautCheck');
 
+Route::post('/del-skill','Qualification@skillDelete')->middleware('astronautCheck');
+
+Route::post('/add-skill','Qualification@createSkill')->middleware('astronautCheck');
+
 //---------------------------------------------------------------------------
 //when we send parameters through the link we should use GET [unless we are updating]
 //------------------------------MAIL--------------------------------------

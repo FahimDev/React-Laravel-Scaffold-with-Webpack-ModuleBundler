@@ -13,7 +13,7 @@ class ClientAppSpace extends Component {
                 <Menu>
                     <h1> This is Client Mobile Application Space </h1>
                     <Col className="p-2" md={3} log={3} sm={6}>
-                        <Link className="NavItem" to="/skill">
+                        <Link className="NavItem" to="/qualification">
                         <Card className="card">
                             <Card.Body>
                                 <h5 className="title-text">Qualification</h5>

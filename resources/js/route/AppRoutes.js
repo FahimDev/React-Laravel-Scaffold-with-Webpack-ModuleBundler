@@ -18,7 +18,13 @@ import pwaFame from "../pages/PWA-fame";
 import pwaEditFame from "../pages/PWA-fame1";
 import pwaAddFame from "../pages/PWA-fame2";
 
+import qualification from "../pages/Qualification";
+import addQualification from "../pages/AddQualification";
+import editQualification from "../pages/EditQualification";
+
 import pwaSkill from "../pages/PWA-skill";
+import  pwaEditSkill from "../pages/PWA-skill";
+import  pwaAddSkill from "../pages/PWA-skill2";
 //import pwaSkill from "../components/HallOfFameCompo";
 //import pwaEditSkill from "../components/UpdateFamePWA";
 //import pwaAddSkill from "../components/EditFamePWA";
@@ -42,6 +48,10 @@ class AppRoutes extends Component {
                     <Route exact path="/add-hall-of-fame" component={addFame}/>
                     <Route exact path="/edit-hall-of-fame/:editID" component={editFame}/>
 
+                    <Route exact path="/qualification" component={qualification}/>
+                    <Route exact path="/add-qualification" component={addQualification}/>
+                    <Route exact path="/edit-qualification" component={editQualification}/>
+
                     <Route exact path="/pwa-log-fame" component={pwaLog}/>
                     <Route exact path="/pwa-fame0" component={pwaFame}/>
                     <Route exact path="/pwa-fame1/:editID" component={pwaEditFame}/>
@@ -49,8 +59,8 @@ class AppRoutes extends Component {
 
                     <Route exact path="/pwa-log-skill" component={pwaLog}/>
                     <Route exact path="/pwa-skill0" component={pwaSkill}/>
-                    <Route exact path="/pwa-skill1/:editID" component={pwaEditFame}/>
-                    <Route exact path="/pwa-skill2" component={pwaAddFame}/>
+                    <Route exact path="/pwa-skill1/:editID" component={pwaEditSkill}/>
+                    <Route exact path="/pwa-skill2" component={pwaAddSkill}/>
                 </Switch>
             </Fragment>
         );

@@ -96,7 +96,7 @@ class QualificationCompo extends Component {
 
         if (confirm("Are you sure you want to delete ->"+delTitle)) {
 
-            let path = "/del-fame";
+            let path = "/del-skill";
             let config = {
                 Headers:{'content-type': 'multipart/form-data'}
             }
@@ -107,7 +107,11 @@ class QualificationCompo extends Component {
             Axios.post(path,formData,config).then(function (response) {
                 if(response.data == "200"){
                     alert(delTitle+" has been deleted.");
-                    window.location.href="/hall-of-fame";
+                    if(window.location.pathname == "/pwa-skill0"){
+                        window.location.href="/pwa-skill0";
+                    }else {
+                        window.location.href="/qualification";
+                    }
                 }else if (response.data == "304"){
                     alert(delTitle+" is not deleted! Please, try again.");
                 }
@@ -186,7 +190,7 @@ class QualificationCompo extends Component {
 
                     <Container>
                         <Row>
-                            <Link  to={window.location.pathname == "/pwa-skill0"?"/pwa-skill2":"/add-hall-of-fame"}><Button variant="primary"><FontAwesomeIcon icon={faPlusCircle} /> <span> Add New </span> </Button></Link>
+                            <Link  to={window.location.pathname == "/pwa-skill0"?"/pwa-skill2":"/add-qualification"}><Button variant="primary"><FontAwesomeIcon icon={faPlusCircle} /> <span> Add New </span> </Button></Link>
                             <Col lg={12} md={12} sm={12} >
                                 <Card className="textStyle" style={{marginTop:"2rem"}}>
                                     <Card.Header>Qualification</Card.Header>

@@ -104,7 +104,11 @@ class HallOfFameCompo extends Component {
             Axios.post(path,formData,config).then(function (response) {
                 if(response.data == "200"){
                     alert(delTitle+" has been deleted.");
-                    window.location.href="/hall-of-fame";
+                    if(window.location.pathname == "/pwa-fame0"){
+                        window.location.href="/pwa-fame0";
+                    }else {
+                        window.location.href="/hall-of-fame";
+                    }
                 }else if (response.data == "304"){
                     alert(delTitle+" is not deleted! Please, try again.");
                 }

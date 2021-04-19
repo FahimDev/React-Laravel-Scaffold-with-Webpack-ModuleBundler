@@ -35,4 +35,76 @@ class Qualification extends Controller{
         return $result;
     }
 
+    function skillDelete(Request $request){
+        $id =$request->input('id');
+        $result=member_exp::where('id','=',$id)->delete();
+
+        if($result == true){
+            return "200"; //Success
+        }else{
+            return "304"; //Not Modified
+        }
+    }
+
+    function createSkill(Request $request){
+
+        $user = Session::get('userNameKey');
+
+        $type=$request->input('type');
+
+
+        if($type == "PE"){
+            $title=$request->input('flexOne');
+            $institute=$request->input('flexTwo');
+            $start=$request->input('flexThree');
+            $end=$request->input('flexFour');
+
+            $result=member_exp::insert(['userName'=> $user,'type'=> $type,'experience'=> $title,'institution'=> $institute,'startYear'=> $start,'endYear'=> $end]);
+
+            if($result == true){
+                return "200";
+            }else{
+                return "304"; //Not Modified
+            }
+
+        }else if($type == "S&T"){
+            $soft = $request->input('flexOne');
+
+            $result=member_exp::insert(['userName'=> $user,'type'=> $type,'softwareAndTools'=> $soft]);
+
+            if($result == true){
+                return "200";
+            }else{
+                return "304";
+            }
+
+        }else if($type == "expSum"){
+            $expSum = $request->input('flexOne');
+
+            $result=member_info::where('userName',$user)->update(['expSummary'=> $expSum]);
+
+            if($result == true){
+                return "200";
+            }else{
+                return "304";
+            }
+
+        }else if ($type == "Skill"){
+
+            $title = $request->input('flexOne');
+
+            $skillSet = $request->input('flexTwo');
+
+            $result=member_exp::insert(['userName'=> $user,'type'=> $type,'skillTitle'=> $title,'skillList'=> $skillSet]);
+
+            if($result == true){
+                return "200"; //Success
+            }else{
+                return "304";//Not Modified
+            }
+        }else{
+            return "400";//Bad Request
+        }
+    }
+
 }

@@ -1,15 +1,17 @@
 import React, {Component, Fragment} from 'react';
 import Menu from "../components/Menu";
+import QualificationCompo from "../components/QualificationCompo";
 
 class Qualification extends Component {
     render() {
+
         return (
-            <Fragment>
-                <Menu>
-                    <h1>Qualification</h1>
-                </Menu>
-            </Fragment>
-        );
+            <Menu>
+                <QualificationCompo/>
+            </Menu>
+        )
+
+
     }
 }
 
