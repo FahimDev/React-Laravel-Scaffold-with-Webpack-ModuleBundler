@@ -23,7 +23,7 @@ import addQualification from "../pages/AddQualification";
 import editQualification from "../pages/EditQualification";
 
 import pwaSkill from "../pages/PWA-skill";
-import  pwaEditSkill from "../pages/PWA-skill";
+import  pwaEditSkill from "../pages/PWA-skill1";
 import  pwaAddSkill from "../pages/PWA-skill2";
 //import pwaSkill from "../components/HallOfFameCompo";
 //import pwaEditSkill from "../components/UpdateFamePWA";

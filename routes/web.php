@@ -41,6 +41,8 @@ Route::get('/get-skill','Qualification@skills')->middleware('astronautCheck');
 
 Route::get('/get-exp-summery','Qualification@expSummery')->middleware('astronautCheck');
 
+Route::get('/get-skills-by-id/{id}','Qualification@getByID')->middleware('astronautCheck');
+
 Route::post('/del-skill','Qualification@skillDelete')->middleware('astronautCheck');
 
 Route::post('/add-skill','Qualification@createSkill')->middleware('astronautCheck');

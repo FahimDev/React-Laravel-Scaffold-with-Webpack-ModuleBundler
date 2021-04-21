@@ -35,6 +35,13 @@ class Qualification extends Controller{
         return $result;
     }
 
+    function getByID($id){
+        $username = Session::get('userNameKey');
+        $result  = member_exp::where('id',$id)->get();
+        //where('userName',$username)->
+        return $result;
+    }
+
     function skillDelete(Request $request){
         $id =$request->input('id');
         $result=member_exp::where('id','=',$id)->delete();
