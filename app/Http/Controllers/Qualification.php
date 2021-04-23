@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Model\member_earn;
 use App\Model\member_exp;
 use App\Model\member_info;
 use App\Model\admin;
@@ -50,6 +51,45 @@ class Qualification extends Controller{
             return "200"; //Success
         }else{
             return "304"; //Not Modified
+        }
+    }
+
+    function  updateSkill(Request $request){
+        $user = Session::get('userNameKey');
+        $id =$request->input('id');
+        $type=$request->input('type');
+        //return "200";
+
+        if($type == "S&T"){
+            $softTool=$request->input('flexOne');
+            $updateStatus = member_exp::where('userName',$user)->where('id',$id)->update(['softwareAndTools' =>$softTool]);
+            if($updateStatus){
+                return "200";
+            }else{
+                return "304";
+            }
+        }
+        elseif ($type == "PE"){
+            $title=$request->input('flexOne');
+            $institute=$request->input('flexTwo');
+            $start=$request->input('flexThree');
+            $end=$request->input('flexFour');
+            $updateStatus = member_exp::where('userName',$user)->where('id',$id)->update(['experience'=> $title,'institution'=> $institute,'startYear'=> $start,'endYear'=> $end]);
+            if($updateStatus){
+                return "200";
+            }else{
+                return "304";
+            }
+        }else{
+            $title=$request->input('flexOne');
+            $skillSet=$request->input('flexTwo');
+
+            $updateStatus = member_exp::where('userName',$user)->where('id',$id)->update(['skillTitle' =>$title,'skillList' =>$skillSet]);
+            if($updateStatus){
+                return "200";
+            }else{
+                return "304";
+            }
         }
     }
 
@@ -113,5 +153,6 @@ class Qualification extends Controller{
             return "400";//Bad Request
         }
     }
+
 
 }

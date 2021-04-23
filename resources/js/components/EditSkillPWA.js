@@ -27,9 +27,95 @@ class EditSkillPwa extends Component {
             isLoading:true,
             isError:false,
         };
-
+        this.onChangeFromOne = this.onChangeFromOne.bind(this);
+        this.onChangeFromTwo = this.onChangeFromTwo.bind(this);
+        this.onChangeFromThree = this.onChangeFromThree.bind(this);
+        this.onAddClick = this.onAddClick.bind(this);
     }
 
+    onChangeFromOne(event){
+        let flexOne = event.target.value;
+        this.setState({flexOne:flexOne});
+        //------------------>Val_from_Constructor:LocalVal
+        console.log(flexOne);
+    }
+
+    onChangeFromTwo(event){
+        let flexTwo = event.target.value;
+        this.setState({flexTwo:flexTwo});
+        console.log(flexTwo);
+    }
+
+    onChangeFromThree(event){
+        let flexThree = event.target.value;
+        this.setState({flexThree:flexThree});
+        console.log(flexThree);
+    }
+
+    onChangeFromFour(event){
+        let flexFour = event.target.value;
+        this.setState({flexThree:flexFour});
+        console.log(flexFour);
+    }
+
+    onChangeType(event) {
+        //console.log(event.target.value);
+        //this.type = event.target.value;
+        this.setState({type: event.target.value});
+    }
+
+    onAddClick(event){
+
+        let type = this.state.type;
+        let printData;
+
+        if(type == 'PE'){
+            printData = "Project Experience";
+        }else if(type == 'Skills'){
+            printData = "Skill set";
+        }else{
+            printData = "Software & Tools";
+        }
+
+
+        let flexOne = this.state.flexOne;
+        let flexTwo = this.state.flexTwo;
+        let flexThree = this.state.flexThree;
+        let flexFour = this.state.flexFour;
+        let id = this.state.id;
+        let path = "/update-skill";
+
+        let config = {
+            Headers:{'content-type': 'multipart/form-data'}
+        }
+
+        let formData = new FormData();
+        formData.append('id',id);
+        formData.append('type',type);
+        formData.append('flexOne',flexOne);
+        formData.append('flexTwo',flexTwo);
+        formData.append('flexThree',flexThree);
+        formData.append('flexFour',flexFour);
+        //alert(type);
+        Axios.post(path,formData,config).then(function (response) {
+            if(response.data == "200"){
+                alert(printData+" information has been updated.");
+                if(window.location.pathname == "/pwa-skill1"){
+                    window.location.href="/pwa-skill0";
+                }else {
+                    window.location.href="/qualification";
+                }
+            }else if (response.data == "304"){
+                alert(printData+" information is not updated! Please, try again.");
+            }
+            else{
+                alert("ERROR UNKNOWN (TEAM GLITCH).");
+            }
+        }).catch(function (error) {
+            alert(error);
+        });
+        event.preventDefault();
+    }
 
     componentDidMount() {
 
@@ -112,11 +198,11 @@ class EditSkillPwa extends Component {
                 </Form.Group>;
                 formThree = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Started at</Form.Label>
-                    <Form.Control onChange={this.onChangeFromThree} value={this.state.flexThree} type="text" placeholder="The date you started at" />
+                    <Form.Control onChange={this.onChangeFromThree} value={this.state.flexThree} type="number" placeholder="The date you started at" />
                 </Form.Group>;
                 formFour = <Form.Group controlId="exampleForm.ControlInput1">
                     <Form.Label>Ended at</Form.Label>
-                    <Form.Control type="date" onChange={this.onChangeFromFour} value={this.state.flexFour} placeholder="The date you ended at" />
+                    <Form.Control type="number" onChange={this.onChangeFromFour} value={this.state.flexFour} placeholder="The date you ended at" />
                 </Form.Group>;
                 //onChange={this.onChangeFromThree} value={this.state.flexThree}
             } else if(type == "S&T") {

@@ -201,7 +201,7 @@ class QualificationCompo extends Component {
                                                     <br/>
                                                     {this.state.expSummary}
 
-                                                    <Button href={window.location.pathname == "/pwa-fame0"?`/pwa-fame1/USERNAME`:`/edit-hall-of-fame/USERNAME`} variant="warning">
+                                                    <Button href={window.location.pathname == "/pwa-skill0"?`/pwa-skill2`:`/add-qualification`} variant="warning">
                                                         <FontAwesomeIcon icon={faEdit} />
                                                     </Button> <br/>
                                                 </Tab>
